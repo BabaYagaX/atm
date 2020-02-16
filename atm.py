@@ -26,7 +26,7 @@ Press 2 for withdrawal
 Press 3 to Transfer Funds
 Press 4 to Exit
 ''')
-choice = int(input('>'))
+choice = int(input('> '))
 
 # checking balance
 if choice == 1:
@@ -37,7 +37,40 @@ Press 2 for withdrawal
 Press 3 to Transfer Funds
 Press 4 to Exit
 ''')
-  choice_1 = int(input('>'))
+  choice_1 = int(input('> '))
   if choice_1 == 4:
     print('Exiting...')
     sys.exit(0)
+
+# withdrawal
+if choice == 2:
+  print('How much do you want to withdraw')
+  amount = int(input('> '))
+  if customer_balance > amount:
+    print(f'Withdrawing {amount}...')
+    customer_balance = customer_balance - amount
+    print(customer_balance)
+  else:
+    print('''Sorry you do not have that amount.
+    Try Checking your balance
+    Exiting...''')
+    sys.exit(1)
+
+# transfer funds
+if choice == 3:
+  account_number = input('Enter account number: ') 
+  amount = int(input('Enter amount you need to transfer:'))
+  if customer_balance >= amount:
+    print(f'Transfering {amount} to {account_number}...')
+    customer_balance = customer_balance - amount
+    print(customer_balance)
+  else:
+    print('''Sorry you do not have that amount.
+  Try Checking your balance
+  Exiting...''')
+  sys.exit(1)
+
+# exit
+if choice == 4:
+  print('Exiting...')
+  sys.exit(0)
